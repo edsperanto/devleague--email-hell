@@ -1,5 +1,7 @@
 const log = require('./email_log').emails;
 
+var report = ({addr, num}) =>
+	console.log(`${addr} received ${num} repeated emails`);
 var repeats = log
 	.reduce((prev, {email}) => {
 		if(prev.some(({addr}) => addr === email)) {
@@ -13,5 +15,5 @@ var repeats = log
 		}
 	}, [])
 	.filter(({num}) => num > 1)
-	.map(({addr}) => addr);
+	.map(user => report(user));
 
