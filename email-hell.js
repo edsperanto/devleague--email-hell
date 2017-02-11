@@ -8,8 +8,10 @@ var repeats = log
 				return elem;
 			});
 		}else{
-			prev.push({addr: email, num: 0});
+			prev.push({addr: email, num: 1});
 			return prev;
 		}
-	}, []);
+	}, [])
+	.filter(({num}) => num > 1)
+	.map(({addr}) => addr);
 
